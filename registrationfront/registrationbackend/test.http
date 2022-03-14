@@ -1,0 +1,11 @@
+POST http:localhost:4000/app/register
+Content-Type: application/json
+
+{
+    "firstName":"Truls",
+    "lastName":"Pettersen",
+    "studentID":"3453453",
+    "age":"30",
+    "nationality":"Norway",
+    "degreeProgram":"BWU"  
+}
