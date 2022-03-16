@@ -1,6 +1,7 @@
 import React,  { Component } from 'react';
-import "bootstrap/dist/css/bootstrap.min.css"
+//import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios'
+import './styles.css'
 
 class App extends Component {
     constructor(){
@@ -89,49 +90,61 @@ class App extends Component {
                 <div className='container'>
                     <div className='form-div'>
                         <form onSubmit={this.onSubmit}>
+                            <label for='input-name'>First name:</label>
                             <input type = 'text' 
+                            id='input-name'
                             placeholder='First Name' 
                             onChange={this.changeFirstName} 
                             value={this.state.firstName} 
-                            className='form-control form-group'
+                            className='input-field'
                             />
 
+                            <label for='input-surname'>Surname:</label>
                             <input type = 'text'
+                            id='input-surname'
                             placeholder='Surname'
                             onChange={this.changeSurName}
                             value={this.state.surName}
-                            className='form-control form-group'
+                            className='input-field'
                             />
 
+                            <label for='input-id'>StudentID:</label>
                             <input type = 'integer'
+                            id='input-id'
                             placeholder='StudentID'
                             onChange={this.changeStudentID}
                             value={this.state.studentID}
-                            className='form-control form-group'
+                            className='input-field'
                             />
 
-                            <input type = 'integer'
+                            <label for='input-age'>Age:</label>
+                            <input type = 'number'
+                            id='input-age'
                             placeholder='Age'
                             onChange={this.changeAge}
                             value={this.state.age}
-                            className='form-control form-group'
+                            className='input-field'
                             />
 
+                            <label for='input-nationality'>Nationality:</label>
                             <input type = 'text'
+                            id='input-nationality'
                             placeholder='Nationality'
                             onChange={this.changeNationality}
                             value={this.state.nationality}
-                            className='form-control form-group'
+                            className='input-field'
                             />
 
+                            <label for='input-degree'>Degree Program:</label>
                             <input type = 'text'
+                            id='input-degree'
                             placeholder='Degree Program'
                             onChange={this.changeDegreeProgram}
                             value={this.state.degreeProgram}
-                            className='form-control form-group'
+                            className='input-field'
                             />
 
-                            <input type='submit' className='btn btn-danger btn-block' value='Submit'/>
+                            <input type='submit' className='btn-submit' value='Submit'/>
                         </form>
                     </div>
                 </div>
