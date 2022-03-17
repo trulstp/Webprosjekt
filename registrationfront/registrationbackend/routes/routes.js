@@ -21,5 +21,10 @@ router.post('/register', (request, response) =>{
     })
 })
 
+router.get('/students', (request, response) =>{
+    registerTemplateCopy.find()
+        .then(studentList => response.json(studentList))
+})
+
 
 module.exports = router
