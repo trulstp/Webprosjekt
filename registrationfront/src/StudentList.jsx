@@ -53,7 +53,7 @@ class StudentList extends Component{
         }
         console.log(deleteStudent)
 
-        axios.delete('http://localhost:4000/app/:studentID', deleteStudent)
+        axios.delete('http://localhost:4000/app/' . deleteStudent.studentID)
             .then(response => console.log(response.data))
         
         this.setState({
