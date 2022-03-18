@@ -9,6 +9,8 @@ class StudentList extends Component{
             studentID:''
         }
         this.changeStudentID = this.changeStudentID.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
+
     }
 
     componentDidMount() {
