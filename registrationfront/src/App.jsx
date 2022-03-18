@@ -107,8 +107,6 @@ class App extends Component {
                 nationality:'',
                 degreeProgram:''
             })
-
-        this.getStudents();
     }
     
     render() {
@@ -119,7 +117,7 @@ class App extends Component {
                     <div className='form-container'>
                         <h2>Register student</h2>
                         <form onSubmit={this.onSubmit}>
-                            <label for='input-name'>First name:</label>
+                            <label htmlFor='input-name'>First name:</label>
                             <input type = 'text' 
                             id='input-name'
                             placeholder='First Name' 
@@ -128,7 +126,7 @@ class App extends Component {
                             className='input-field'
                             />
 
-                            <label for='input-surname'>Surname:</label>
+                            <label htmlFor='input-surname'>Surname:</label>
                             <input type = 'text'
                             id='input-surname'
                             placeholder='Surname'
@@ -137,7 +135,7 @@ class App extends Component {
                             className='input-field'
                             />
 
-                            <label for='input-id'>StudentID:</label>
+                            <label htmlFor='input-id'>StudentID:</label>
                             <input type = 'integer'
                             id='input-id'
                             placeholder='StudentID'
@@ -146,7 +144,7 @@ class App extends Component {
                             className='input-field'
                             />
 
-                            <label for='input-age'>Age:</label>
+                            <label htmlFor='input-age'>Age:</label>
                             <input type = 'number'
                             id='input-age'
                             placeholder='Age'
@@ -155,7 +153,7 @@ class App extends Component {
                             className='input-field'
                             />
 
-                            <label for='input-nationality'>Nationality:</label>
+                            <label htmlFor='input-nationality'>Nationality:</label>
                             <input type = 'text'
                             id='input-nationality'
                             placeholder='Nationality'
@@ -164,7 +162,7 @@ class App extends Component {
                             className='input-field'
                             />
 
-                            <label for='input-degree'>Degree Program:</label>
+                            <label htmlFor='input-degree'>Degree Program:</label>
                             <input type = 'text'
                             id='input-degree'
                             placeholder='Degree Program'
