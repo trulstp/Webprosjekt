@@ -1,5 +1,4 @@
 import React,  { Component } from 'react';
-//import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios'
 import './styles.css'
 
@@ -59,6 +58,32 @@ class App extends Component {
         })
     }
 
+    componentDidMount() {
+        this.getStudents();
+    }
+    
+    getStudents() {
+        document.getElementById('studentlist').innerHTML = '';
+        axios.get('http://localhost:4000/app/students')
+            .then((response) => {
+                const data = response.data;
+                console.log('Data found!!! :D')
+                
+                this.printStudents(data);
+            })
+            .catch(() => {
+                console.log('No data found :(')
+            })
+    }
+
+    printStudents(studentsData){
+        const studentlist = document.getElementById('studentlist');
+
+        studentsData.forEach((student) => {
+            studentlist.innerHTML += '<tr><td>' + student.studentID + '</td><td>' + student.surName + '</td><td>' + student.firstName + '</td><td>' + student.age + '</td><td>' + student.nationality + '</td><td>' + student.degreeProgram + '</td></tr>'
+        })
+    }
+
     onSubmit(event){
         event.preventDefault()
 
@@ -82,13 +107,17 @@ class App extends Component {
                 nationality:'',
                 degreeProgram:''
             })
+
+        this.getStudents();
     }
     
     render() {
         return ( 
             <div>
-                <div className='container'>
-                    <div className='form-div'>
+                <h1>Student overview</h1>
+                <div className='container-form background-blue'>
+                    <div className='form-container'>
+                        <h2>Register student</h2>
                         <form onSubmit={this.onSubmit}>
                             <label for='input-name'>First name:</label>
                             <input type = 'text' 
@@ -146,6 +175,27 @@ class App extends Component {
 
                             <input type='submit' className='btn-submit' value='Submit'/>
                         </form>
+                    </div>
+                </div>
+
+                <div>
+                    <div className='container'>
+                        <h2>List of students</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>StudentID</th>
+                                    <th>Surname</th>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Nationality</th>
+                                    <th>Degree</th>
+                                </tr>
+                            </thead>
+                            <tbody id='studentlist'>
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
