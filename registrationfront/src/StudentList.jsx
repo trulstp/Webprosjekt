@@ -48,12 +48,15 @@ class StudentList extends Component{
     onSubmit(event){
         event.preventDefault()
 
-        const deleteStudent = {
+        let deleteStudent = {
             studentID: this.state.studentID
         }
+        
+        deleteStudent = Number(deleteStudent.studentID)
+
         console.log(deleteStudent)
 
-        axios.delete('http://localhost:4000/app/' . deleteStudent.studentID)
+        axios.delete(`http://localhost:4000/app/${deleteStudent}`)
             .then(response => console.log(response.data))
         
         this.setState({
@@ -67,7 +70,7 @@ class StudentList extends Component{
                 <div className='container'>
                     <h2>Delete student</h2>
                     <form onSubmit={this.onSubmit}>
-                        <label for='input-id'>StudentID: </label>
+                        <label htmlFor='input-id'>StudentID: </label>
                         <input type = 'text' 
                         id='input-id'
                         placeholder='StudentID' 
