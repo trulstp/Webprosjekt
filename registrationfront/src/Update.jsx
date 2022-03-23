@@ -78,6 +78,7 @@ class Update extends Component {
 
     printStudents(studentsData){
         const studentlist = document.getElementById('studentlist');
+        studentlist.innerHTML = '';
 
         studentsData.forEach((student) => {
             studentlist.innerHTML += '<tr><td>' + student.studentID + '</td><td>' + student.surName + '</td><td>' + student.firstName + '</td><td>' + student.age + '</td><td>' + student.nationality + '</td><td>' + student.degreeProgram + '</td></tr>'
@@ -112,6 +113,8 @@ class Update extends Component {
                 nationality:'',
                 degreeProgram:''
             })
+        
+        this.getStudents()
     }
     
     
@@ -121,7 +124,7 @@ class Update extends Component {
                 <h1>Student overview</h1>
                 <div className='container-form background-blue'>
                     <div className='form-container'>
-                        <h2>Register student</h2>
+                        <h2>Update student</h2>
                         <form onSubmit={this.onSubmit}>
                             <label htmlFor='input-id'>StudentID:</label>
                             <input type = 'integer'
