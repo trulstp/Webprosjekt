@@ -12,7 +12,7 @@ const registerTemplate = new mongoose.Schema({
     studentID:{
         type:Number,
         required:true,
-        unique: true
+        unique:true
     },
     age:{
         type:Number,
