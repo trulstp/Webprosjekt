@@ -1,11 +1,23 @@
 const registerTemplateCopy = require('../models/RegistrationModels')
 
 
-
 const getAllStudents = (request, response) =>{
     registerTemplateCopy.find()
         .then(studentList => response.json(studentList))
 }
+
+const updateStudents = async (request, response) =>{ 
+        try {
+            const _studentID = request.params;
+            const updateStudent = await registerTemplateCopy.findOneAndUpdate(_studentID, request.body, {
+                new : true
+            });
+            response.send(updateStudent);
+        }catch(e){
+            response.status(404).send(e);
+        }
+    }
+
 
 const registerStudent = (request, response) =>{
     const registeredUser = new registerTemplateCopy({
@@ -36,5 +48,6 @@ const deleteStudent = async (request, response) => {
     module.exports = {
         getAllStudents,
         registerStudent,
-        deleteStudent
+        deleteStudent,
+        updateStudents
     }
