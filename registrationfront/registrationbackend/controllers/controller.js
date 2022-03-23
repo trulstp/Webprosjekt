@@ -2,7 +2,7 @@ const registerTemplateCopy = require('../models/RegistrationModels')
 
 
 const getAllStudents = (request, response) =>{
-    registerTemplateCopy.find()
+    registerTemplateCopy.find().sort({studentID:1})
         .then(studentList => response.json(studentList))
 }
 
@@ -44,10 +44,20 @@ const deleteStudent = async (request, response) => {
         response.json({message:err})
     }
 }
+
+const findStudent = async (request, response) => {
+    try{
+        const student = await registerTemplateCopy.find({studentID:request.params.studentID})
+        response.status(200).json({student})
+    }catch(error){
+        response.json({message:error})
+    }
+}
     
     module.exports = {
         getAllStudents,
         registerStudent,
         deleteStudent,
-        updateStudents
+        updateStudents,
+        findStudent
     }
