@@ -48,20 +48,28 @@ class StudentList extends Component{
     onSubmit(event){
         event.preventDefault()
 
-        let deleteStudent = {
-            studentID: this.state.studentID
+        if (this.state.studentID !== '') {
+            let deleteStudent = {
+                studentID: this.state.studentID
+            }
+            
+            deleteStudent = Number(deleteStudent.studentID)
+    
+            console.log(deleteStudent)
+    
+            axios.delete(`http://localhost:4000/app/${deleteStudent}`)
+                .then(response => console.log(response.data))
+            
+            this.setState({
+                studentID:''
+            })
+            document.getElementById('message').innerHTML = 'Deleted student'
+            this.getStudents();
         }
-        
-        deleteStudent = Number(deleteStudent.studentID)
 
-        console.log(deleteStudent)
-
-        axios.delete(`http://localhost:4000/app/${deleteStudent}`)
-            .then(response => console.log(response.data))
-        
-        this.setState({
-            studentID:''
-        })
+        else {
+            document.getElementById('message').innerHTML = 'Please write a studentID'
+        }
     }
 
     render() {
@@ -81,6 +89,7 @@ class StudentList extends Component{
 
                         <input type='submit' className='btn-submit' value='Delete'/>
                     </form>
+                    <p id='message'></p>
 
                     <h2>List of students</h2>
                     <table>
