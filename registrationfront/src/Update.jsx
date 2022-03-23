@@ -2,7 +2,7 @@ import React,  { Component } from 'react';
 import axios from 'axios'
 import './styles.css'
 
-class App extends Component {
+class Update extends Component {
     constructor(){
         super()
         this.state = {
@@ -87,16 +87,21 @@ class App extends Component {
     onSubmit(event){
         event.preventDefault()
 
-        const registered = {
+        let updateStudent = {
+            studentID: this.state.studentID
+        }
+        
+        updateStudent = Number(updateStudent.studentID)
+
+        const updated = {
             firstName: this.state.firstName,
             surName: this.state.surName,
-            studentID: this.state.studentID,
             age: this.state.age,
             nationality: this.state.nationality,
             degreeProgram: this.state.degreeProgram
         }
 
-        axios.post('http://localhost:4000/app/register', registered)
+        axios.patch(`http://localhost:4000/app/update/${updateStudent}`, updated)
             .then(response => console.log(response.data))
 
             this.setState({
@@ -109,6 +114,7 @@ class App extends Component {
             })
     }
     
+    
     render() {
         return ( 
             <div>
@@ -117,6 +123,15 @@ class App extends Component {
                     <div className='form-container'>
                         <h2>Register student</h2>
                         <form onSubmit={this.onSubmit}>
+                            <label htmlFor='input-id'>StudentID:</label>
+                            <input type = 'integer'
+                            id='input-id'
+                            placeholder='StudentID'
+                            onChange={this.changeStudentID}
+                            value={this.state.studentID}
+                            className='input-field'
+                            />
+
                             <label htmlFor='input-name'>First name:</label>
                             <input type = 'text' 
                             id='input-name'
@@ -132,15 +147,6 @@ class App extends Component {
                             placeholder='Surname'
                             onChange={this.changeSurName}
                             value={this.state.surName}
-                            className='input-field'
-                            />
-
-                            <label htmlFor='input-id'>StudentID:</label>
-                            <input type = 'integer'
-                            id='input-id'
-                            placeholder='StudentID'
-                            onChange={this.changeStudentID}
-                            value={this.state.studentID}
                             className='input-field'
                             />
 
@@ -171,8 +177,8 @@ class App extends Component {
                             className='input-field'
                             />
 
-                            <input type='submit' className='btn-submit' value='Submit'/>
-                            <input type='button' className='btn-update' value='Update'/>
+                            <input type='submit' className='btn-submit' value='Update'/>
+                            
                         </form>
                     </div>
                 </div>
@@ -202,4 +208,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Update;
