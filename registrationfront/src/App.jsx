@@ -112,7 +112,7 @@ class App extends Component {
     render() {
         return ( 
             <div>
-                <h1>Student overview</h1>
+                <h1>Student administration</h1>
                 <div className='container-form background-blue'>
                     <div className='form-container'>
                         <h2>Register student</h2>
@@ -172,7 +172,6 @@ class App extends Component {
                             />
 
                             <input type='submit' className='btn-submit' value='Submit'/>
-                            <input type='button' className='btn-update' value='Update'/>
                         </form>
                     </div>
                 </div>

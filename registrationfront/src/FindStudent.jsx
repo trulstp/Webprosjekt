@@ -69,6 +69,7 @@ class FindStudent extends Component{
     render() {
         return(
             <div>
+                <h1>Student administration</h1>
                 <div className='container'>
                     <h2>Search for student</h2>
                     <form onSubmit={this.onSubmit}>

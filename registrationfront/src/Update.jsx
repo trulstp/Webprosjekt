@@ -128,7 +128,7 @@ class Update extends Component {
     render() {
         return ( 
             <div>
-                <h1>Student overview</h1>
+                <h1>Student administration</h1>
                 <div className='container-form background-blue'>
                     <div className='form-container'>
                         <h2>Update student</h2>
