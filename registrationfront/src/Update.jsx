@@ -88,33 +88,40 @@ class Update extends Component {
     onSubmit(event){
         event.preventDefault()
 
-        let updateStudent = {
-            studentID: this.state.studentID
+        if (this.state.studentID !== '') {
+            let updateStudent = {
+                studentID: this.state.studentID
+            }
+            
+            updateStudent = Number(updateStudent.studentID)
+    
+            const updated = {
+                firstName: this.state.firstName,
+                surName: this.state.surName,
+                age: this.state.age,
+                nationality: this.state.nationality,
+                degreeProgram: this.state.degreeProgram
+            }
+    
+            axios.patch(`http://localhost:4000/app/update/${updateStudent}`, updated)
+                .then(response => console.log(response.data))
+    
+                this.setState({
+                    firstName:'',
+                    surName:'',
+                    studentID:'',
+                    age:'',
+                    nationality:'',
+                    degreeProgram:''
+                })
+            
+            document.getElementById('message').innerHTML = 'Updated student'
+            this.getStudents()
         }
-        
-        updateStudent = Number(updateStudent.studentID)
 
-        const updated = {
-            firstName: this.state.firstName,
-            surName: this.state.surName,
-            age: this.state.age,
-            nationality: this.state.nationality,
-            degreeProgram: this.state.degreeProgram
+        else {
+            document.getElementById('message').innerHTML = 'Please write a studentID'
         }
-
-        axios.patch(`http://localhost:4000/app/update/${updateStudent}`, updated)
-            .then(response => console.log(response.data))
-
-            this.setState({
-                firstName:'',
-                surName:'',
-                studentID:'',
-                age:'',
-                nationality:'',
-                degreeProgram:''
-            })
-        
-        this.getStudents()
     }
     
     
@@ -183,6 +190,7 @@ class Update extends Component {
                             <input type='submit' className='btn-submit' value='Update'/>
                             
                         </form>
+                        <p id='message'></p>
                     </div>
                 </div>
 
