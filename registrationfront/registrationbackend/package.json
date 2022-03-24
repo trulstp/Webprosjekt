@@ -4,8 +4,12 @@
   "description": "Registration Application",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
   },
+  "engines": {
+    "node": "10.16.0"
+},
   "author": "Truls Pettersen",
   "license": "ISC",
   "dependencies": {
